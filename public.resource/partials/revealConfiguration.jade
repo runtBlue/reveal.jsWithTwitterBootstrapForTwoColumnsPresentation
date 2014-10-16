@@ -1,0 +1,82 @@
+:coffee
+  # Full list of configuration options available here:
+  # https://github.com/hakimel/reveal.js#configuration
+  Reveal.initialize
+    
+    # math settings
+    math:
+      mathjax: "http://cdn.mathjax.org/mathjax/latest/MathJax.js"
+      config: "TeX-AMS_HTML-full" # See http://docs.mathjax.org/en/latest/config-files.html
+
+    
+    # window settings
+    width: 960
+    height: 700
+    margin: 0.1
+    minScale: 0.2
+    maxScale: 1.0
+    
+    # default settings
+    controls: true
+    progress: true
+    slideNumber: true
+    history: false
+    center: true
+    touch: true
+    loop: false
+    
+    # styling settings
+    theme: Reveal.getQueryHash().theme # available themes are in /css/theme
+    transition: Reveal.getQueryHash().transition or "default" # default/cube/page/concave/zoom/linear/fade/none
+    # Parallax scrolling
+    # parallaxBackgroundImage: 'https://s3.amazonaws.com/hakim-static/reveal-js/reveal-parallax-1.jpg',
+    # parallaxBackgroundSize: '2100px 900px',
+    # Optional libraries used to extend on reveal.js
+    dependencies: [
+      {
+        src: "plugin/math/math.js"
+        async: true
+      }
+      {
+        src: "lib/js/classList.js"
+        condition: ->
+          not document.body.classList
+      }
+      {
+        src: "plugin/markdown/marked.js"
+        condition: ->
+          !!document.querySelector("[data-markdown]")
+      }
+      {
+        src: "plugin/markdown/markdown.js"
+        condition: ->
+          !!document.querySelector("[data-markdown]")
+      }
+      {
+        src: "plugin/highlight/highlight.js"
+        async: true
+        callback: ->
+          hljs.initHighlightingOnLoad()
+          return
+      }
+      {
+        src: "plugin/zoom-js/zoom.js"
+        async: true
+        condition: ->
+          !!document.body.classList
+      }
+      {
+        src: "plugin/notes/notes.js"
+        async: true
+        condition: ->
+          !!document.body.classList
+      }
+    ]
+
+  Reveal.configure
+    autoSlide: 0
+    keyboard:
+      32: null
+      33: ->
+        Reveal.next()
+        return
